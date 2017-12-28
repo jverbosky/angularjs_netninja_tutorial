@@ -3,7 +3,7 @@ The Net Ninja AngularJS Tutorial App
 per:
 https://www.youtube.com/watch?v=FlUCU13dJyo&list=PL4cUxeGkcC9gsJS5QgFT2IvWIX78dV3_v
 
-This AngularJS app was developed using the Net Ninja's tutorial series.
+This AngularJS app was developed using the Net Ninja's tutorial series.  Commented throughout based on tutorial comments and own findings.
 
 It can be run using Visual Studio Code's Live Server feature - just right-click on index.html and select "Open with Live Server".  Note that the Pretty URLs functionality does not work properly with VSC's Live Server.
 
