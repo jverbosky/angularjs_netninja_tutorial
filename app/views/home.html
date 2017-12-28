@@ -1,0 +1,13 @@
+<div class="content">
+
+    <h1 style="text-align: center">Homepage</h1>
+
+    <!-- custom directive - need to provide access to ninja data -->
+    <!-- store the ninjas object from NinjaController scope in ninjas attribute -->
+    <!-- passing in string for title attribue, so need to enclose in single quotes -->
+    <random-ninja ninjas="ninjas" title="'Random Ninja'">
+        <!-- won't work without using transclude in directive -->
+        <p>Check out our random ninja</p>
+    </random-ninja>
+
+</div>

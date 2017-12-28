@@ -1,0 +1,63 @@
+<!-- 
+Angular includes a number of built-in classes for form validation
+        
+    ng-pristine - when form/input is empty
+    ng-dirty - when form/input has data
+
+    ng-untouched - when input has not been touched
+    ng-touched - when input has been touched
+
+    ng-invalid - when a form field is not valid
+    ng-valid - when a form field is valid
+
+    * when all fields have ng-valid, the form changes to ng-valid
+
+Angular also includes corresponding (boolean) properties for these classes:
+
+    -Class-         -Property-
+    ng-pristine     $pristine
+    ng-dirty        $dirty
+    ng-untouched    $untouched
+    ng-touched      $touched
+    ng-invalid      $invalid
+    ng-valid        $valid
+-->
+
+
+<div class="content">
+
+    <!-- novalidate attribute overrides default HTML5 form validation -->
+    <!-- use ng-submit to call sendMessage() in ContactController when submit button is selected -->
+    <form name="contactForm" ng-submit="sendMessage()" novalidate>
+        <!-- use ng-required instead of HTML5 "required" attribute to tell Angular the input is required -->
+        <!-- in a real-world app will send data to a DB, so use ng-model to put data in $scope for controller access -->
+        <input type="text" placeholder="Name" name="name" ng-model="contact.name" ng-required="true" />
+        <!-- use to view form validation property values for name input -->
+        <!-- <span>
+            $pristine - {{ contactForm.name.$pristine }}
+            $dirty - {{ contactForm.name.$dirty }}
+            $untouched - {{ contactForm.name.$untouched }}
+            $touched - {{ contactForm.name.$touched }}
+            $invalid - {{ contactForm.name.$invalid }}
+            $valid - {{ contactForm.name.$valid }}
+        </span> -->
+        <!-- only show this div if the input is touched and invalid -->
+        <div ng-show="contactForm.name.$touched && contactForm.name.$invalid">
+            <small style="color: red; display: block; text-align: center;">Enter a valid name.</small>
+        </div>
+        <input type="email" placeholder="Email" name="email" ng-model="contact.email" ng-required="true" />
+        <div ng-show="contactForm.email.$touched && contactForm.email.$invalid">
+            <small style="color: red; display: block; text-align: center;">Enter a valid email.</small>
+        </div>
+        <textarea placeholder="Your Message" name="message" ng-model="contact.message" ng-required="true"></textarea>
+        <div ng-show="contactForm.message.$touched && contactForm.message.$invalid">
+            <small style="color: red; display: block; text-align: center;">Enter a valid message.</small>
+        </div>
+        <!-- use ng-disabled to disable the form submit button until all fields are valid -->
+        <input type="Submit" value="Send" ng-disabled="contactForm.$invalid" />
+    </form>
+
+    <!-- use to verify form data going into $scope.contact object -->
+    <!-- {{ contact }} -->
+
+</div>

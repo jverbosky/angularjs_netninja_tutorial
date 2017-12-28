@@ -1,0 +1,41 @@
+<!-- tutorial 14 (ng-source), 15 (ng-src) -->
+
+<!-- wrap ng-controller div in div with style applied -->
+<div class="content">
+
+    <!-- no longer need this due to $routeProvider controller definition -->
+    <!-- <div ng-controller="NinjaController"> -->
+
+        <!-- clicking a button will update the order variable used in ng-repeat orderBy -->
+        <button ng-click="order = 'name'">Order by Name</button>
+        <button ng-click="order = 'belt'">Order by Belt</button>
+
+        <input type="text" ng-model="search" placeholder="Search for a ninja" />
+
+        <!-- use ID to target with animation classes -->
+        <ul id="ninja-list">
+        <!-- will use order variable in orderBy filter -->
+        <li ng-repeat="ninja in ninjas | orderBy: order | filter: search" ng-show="ninja.available">
+            <!-- use ng-src instead of src to prevent console error on {{ ninja.thum }} -->
+            <!-- use ng-show to only load image if one exists -->
+            <img ng-src="{{ ninja.thumb }}" style="margin: -12px 10px 0 0; float: left; width: 50px;" ng-show="ninja.thumb" />
+            <h3>{{ ninja.name }} - {{ ninja.rate | currency}}</h3>
+            <div class="remove" ng-click="removeNinja(ninja)">x</div>
+
+            <!-- use data binding to apply background color -->
+            <span class="belt" style="background: {{ ninja.belt }}">{{ ninja.belt }} belt</span>
+        </li>
+        </ul>
+
+        <!-- use ng-submit in the form element to trigger function when submit button pressed -->
+        <form ng-submit="addNinja()">
+        <!-- use ng-model to grab value from input fields and add to $scope.newNinja object -->
+        <input type="text" placeholder="name" ng-model="newNinja.name" />
+        <input type="text" placeholder="belt" ng-model="newNinja.belt" />
+        <input type="text" placeholder="rate" ng-model="newNinja.rate" />
+        <input type="submit" value="Add new ninja" />
+        </form>
+        <button ng-click="removeAll()" style="display: block; margin: 0 auto;">Remove all ninjas</button>
+
+    <!-- </div> -->
+</div>

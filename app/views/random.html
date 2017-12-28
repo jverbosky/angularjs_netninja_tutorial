@@ -1,0 +1,15 @@
+<!-- if section specified here, "replace: true" in directive will replace random-ninja element with section element -->
+<!-- <section> -->
+
+<div style="text-align: center">
+
+    <h4>{{ title }}</h4>
+
+    <!-- specify where nested HTML (transclude: true) in random-ninja element should appear -->
+    <div ng-transclude></div>
+
+    <img ng-src="{{ ninjas[random].thumb }}" style="width: 50px;" />
+
+</div>
+
+<!-- </section> -->

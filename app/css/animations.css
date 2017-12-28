@@ -1,0 +1,62 @@
+/* 
+ngAnimate styles documented here:
+https://docs.angularjs.org/api/ngAnimate
+*/
+
+/*
+Animation start-point: .ng-enter
+Animation end-point: .ng-enter .ng-enter-active
+*/
+
+/* The starting CSS styles for the enter animation */
+main.ng-enter {
+    /* 0.5s specifies length of animation */
+    /* linear specifies a transition effect with the same speed from start to end */
+    /* all specifies that the transition will apply to all animations */
+    transition: 0.5s linear all;
+    opacity: 0;
+}
+
+/* The finishing CSS styles for the enter animation */
+/* include .ng-enter here to ensure the earlier instance gets overwritten */
+main.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+/* target the li elements in the ul element with ninja-list id */
+/* animates the entry of a new li item */
+#ninja-list li.ng-enter {
+    transition: 0.25s linear all;
+    opacity: 0;
+    /* start lower on the page */
+    transform: translateY(30px);
+}
+
+#ninja-list li.ng-enter.ng-enter-active {
+    opacity: 1;
+    /* finish in the regular position */
+    transform: translateY(0);
+}
+
+/* target the li elements in the ul element with ninja-list id */
+/* animates the removal of an li item */
+#ninja-list li.ng-leave {
+    transition: 0.25s linear all;
+    opacity: 1;
+    /* start in the regular position */
+    transform: translateX(0);
+}
+
+#ninja-list li.ng-leave.ng-leave-active {
+    opacity: 0;
+    /* finish off the left side of the page */
+    transform: translateX(-100%);
+}
+
+/* use ng-leave-stagger so multiple animations are staggered (one-by-one) */
+/* - works great with ng-repeat (multiple repeated items) */
+#ninja-list li.ng-leave-stagger{
+    transition-delay: 0.25s;
+    /* prevents class from inheriting any other durations */
+    transition-duration: 0;
+}

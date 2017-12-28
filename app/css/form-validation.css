@@ -1,0 +1,10 @@
+/* add red border if fields are invalid and touched */
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
+
+/* styles submit button on contact form when disabled */
+input[disabled="disabled"] {
+    opactiy: 0.4;
+    cursor: not-allowed !important;
+}

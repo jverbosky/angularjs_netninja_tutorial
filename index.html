@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myNinjaApp">  <!-- ng-app can be here, body, a div, etc. -->
+
+  <head>
+    
+    <!-- 
+      Note on $locationProvider.html5Mode(true) in app.js and the base tag:
+      - for Visual Studio Code w/Live Server, had to open the root folder of the project
+        - i.e. the folder that contains the app directory, header.html and index.html
+      - opening a parent directory (i.e. /parent/ninja-app) in Visual Studio Code and
+        launching the app via "Open with Live Server" did not work properly due to the
+        parent directory being used as the base (can test by opening http://localhost:5500)
+      - still requires server-side rewrites to handle direct page access (including page refreshes),
+        which is why I've reverted back to the AngularJS-style URLS for using VSC's Live Server
+      - further reading:
+        https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions#how-to-configure-your-server-to-work-with-html5mode
+        https://stackoverflow.com/questions/16569841/reloading-the-page-gives-wrong-get-request-with-angularjs-html5-mode
+     -->
+    <!-- <base href="/" /> -->
+
+    <title>The Net Ninja AngularJS Demo</title>
+    <link href="app/css/styles.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="app/css/other.css" rel="stylesheet" type="text/css" /> -->
+    <link href="app/css/animations.css" rel="stylesheet" type="text/css" />
+    <link href="app/css/form-validation.css" rel="stylesheet" type="text/css" />
+
+    <!-- downloaded locally via https://angularjs.org/ -->
+    <script src="app/lib/angular.min.js"></script>
+    <script src="app/lib/angular-route.min.js"></script>
+    <script src="app/lib/angular-animate.min.js"></script>
+    <script src="app/app.js"></script>
+  </head>
+
+  <body>
+
+    <header ng-include="'header.html'"></header>
+
+    <!-- tutorial 16 (ng-view) -->
+
+    <!-- use ng-view to tell AngularJS where to put each view -->
+    <!-- target the main tag with .ng-enter and .ng-enter-active animation classes -->
+    <main ng-view></main>
+
+
+    <!-- tutorial 13 -->
+    <!-- <header ng-include="'header.html'"></header> -->
+
+    <!-- wrap ng-controller div in div with style applied -->
+    <!-- <div class="content">
+      <div ng-controller="NinjaController"> -->
+
+        <!-- clicking a button will update the order variable used in ng-repeat orderBy -->
+        <!-- <button ng-click="order = 'name'">Order by Name</button>
+        <button ng-click="order = 'belt'">Order by Belt</button>
+
+        <input type="text" ng-model="search" placeholder="Search for a ninja" />
+  
+        <ul> -->
+          <!-- will use order variable in orderBy filter -->
+          <!-- <li ng-repeat="ninja in ninjas | orderBy: order | filter: search" ng-show="ninja.available">
+            <h3>{{ ninja.name }} - {{ ninja.rate | currency}}</h3>
+            <div class="remove" ng-click="removeNinja(ninja)">x</div> -->
+
+            <!-- use data binding to apply background color -->
+            <!-- <span class="belt" style="background: {{ ninja.belt }}">{{ ninja.belt }} belt</span>
+          </li>
+        </ul>
+
+      </div>
+    </div> -->
+
+    <!-- tutorial 12 -->
+    <!-- <header ng-include="'header.html'"></header> -->
+
+    <!-- wrap ng-controller div in div with style applied -->
+    <!-- <div class="content">
+      <div ng-controller="NinjaController"> -->
+
+        <!-- <input type="text" ng-model="search" placeholder="Search for a ninja" /> -->
+  
+        <!-- can also use ng-hide to only show ninjas with an available property of false -->
+        <!-- <ul>
+          <li ng-repeat="ninja in ninjas | orderBy: 'name' | filter: search" ng-hide="ninja.available">
+            {{ ninja.name }} - {{ ninja.belt }} - {{ ninja.rate | currency}}
+          </li>
+        </ul> -->
+
+        <!-- version to only show ninjas with an available property of false -->
+        <!-- <ul>
+          <li ng-repeat="ninja in ninjas | orderBy: 'name' | filter: search" ng-show="!ninja.available">
+            {{ ninja.name }} - {{ ninja.belt }} - {{ ninja.rate | currency}}
+          </li>
+        </ul> -->
+
+        <!-- add ng-show to only display results with a ninja.available property of true -->
+        <!-- <ul>
+          <li ng-repeat="ninja in ninjas | orderBy: 'name' | filter: search" ng-show="ninja.available">
+            {{ ninja.name }} - {{ ninja.belt }} - {{ ninja.rate | currency}}
+          </li>
+        </ul> -->
+
+      <!-- </div>
+    </div> -->
+
+    <!-- tutorial 11 -->
+    <!-- <header ng-include="'header.html'"></header> -->
+
+    <!-- works, but doesn't indicate it's a header element in inspect -->
+    <!-- <ng-include src="'header.html'"></ng-include> -->
+
+    <!-- <div ng-controller="NinjaController">
+
+      <input type="text" ng-model="search" />
+
+      <ul>
+        <li ng-repeat="ninja in ninjas | orderBy: 'name' | filter: search">
+          {{ ninja.name }} - {{ ninja.belt }} - {{ ninja.rate | currency}}
+        </li>
+      </ul>
+
+    </div> -->
+
+    <!-- tutorial 10 -->
+    <!-- <div ng-controller="NinjaController"> -->
+
+      <!-- <input type="text" ng-model="search" /> -->
+
+      <!-- <ul> -->
+
+        <!-- filter by search stored via ng-model -->
+        <!-- some filters on li, some on properties -->
+        <!-- <li ng-repeat="ninja in ninjas | orderBy: 'name' | filter: search">
+          {{ ninja.name }} - {{ ninja.belt }} - {{ ninja.rate | currency: '$' }}
+        </li> -->
+
+        <!-- reverse order '-name' -->
+        <!-- <li ng-repeat="ninja in ninjas | orderBy: '-name'">{{ ninja.name }} - {{ ninja.belt }}</li> -->
+      <!-- </ul> -->
+
+
+    <!-- tutorial 9 -->
+    <!-- this div is the scope of NinjaController -->
+    <!-- <div ng-controller="NinjaController"> -->
+
+      <!-- populated via $scope.message in controller -->
+      <!-- <p>{{ message }}</p> -->
+
+      <!-- populated via $scope.ninjas in controller -->
+      <!-- <ul>
+        <li ng-repeat="ninja in ninjas">{{ ninja }}</li>
+      </ul> -->
+
+    <!-- </div> -->
+
+
+  <!-- tutorial 7 -->  
+  <!-- <body ng-init="ninjas=['yoshi', 'crystal', 'ryu', 'shaun']"> -->
+
+    <!-- using ng-repeat to iterate through ninjas array -->
+    <!-- <ul>
+      <li ng-repeat="ninja in ninjas">{{ ninja }}</li>
+    </ul> -->
+
+    <!-- hard-coded -->
+<!--     <ul>
+      <li>{{ ninjas[0] }}</li>
+      <li>{{ ninjas[1] }}</li>
+      <li>{{ ninjas[2] }}</li>
+      <li>{{ ninjas[3] }}</li>
+    </ul> -->
+
+  <!-- tutorial 6 -->
+  <!-- applying styles using directives -->
+  <!-- <body ng-init="color='red'"> -->
+
+    <!-- <p class="{{color}}">hello dudes</p> -->
+
+  <!-- ng-init allows inline data -->
+  <!-- <body ng-init="meats=['pork', 'ham', 'beef']"> -->
+
+    <!-- <p>You like {{ meats[1]}} and you also like {{ meats[2] }}.</p> -->
+
+    <!-- tutorial 4 -->
+    <!-- ng-model stores data in the model from the view -->
+    <!-- <input type="text" ng-model="favMeat" placeholder="enter your fav meat" /> -->
+    <!-- two-way data binding -->
+    <!-- <p>Your fav meat is: {{ favMeat }}</p> -->
+
+    <!-- tutorial 3 -->
+    <!-- <main ng-view> -->
+      <!-- when a user types /contact, dynamically inject the contact.html view -->
+      <!-- when a user types /about, dynamically inject the about.html view -->
+    <!-- </main> -->
+
+  </body>
+
+</html>
