@@ -13,10 +13,10 @@ myNinjaApp.config(['$routeProvider', '$locationProvider', function($routeProvide
   // $locationProvider.html5Mode(true);
 
   // an alternative that doesn't require the base tag in index.html
-  // $locationProvider.html5Mode({
-  //   enabled: true,
-  //   requireBase: false
-  // });
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
 
   $routeProvider
     .when('/home', {

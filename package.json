@@ -1,0 +1,18 @@
+{
+  "name": "net_ninja_angularjs_tutorial",
+  "version": "1.0.0",
+  "description": "AngularJS Tutorial by The Net Ninja (YouTube)",
+  "main": "index.html",
+  "author": "JV",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.7"
+  },
+  "devDependencies": {
+    "pushstate-server": "^3.0.1"
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "pushstate-server ./ 8000"
+  }
+}

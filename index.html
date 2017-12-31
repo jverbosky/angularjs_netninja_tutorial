@@ -18,6 +18,19 @@
      -->
     <!-- <base href="/" /> -->
 
+    <!--
+      Update on using $locationProvider.html5Mode(true) in app.js:
+      - after researching now using pushstate-server to handle HTML5 Pushstate
+        https://github.com/scottcorgan/pushstate-server
+      - added package.json to handle npm (install & start)
+      - to run this app with "pretty URLs" do the following:
+        - install Node.js
+        - run "npm install" from the same directory as package.json
+        - run "npm start" to serve the app via pushstate-server
+        - use a web browser to browse to "http://localhost:8000"
+      - now direct URLs (i.e. http://localhost:8000/contact) and page refreshes work properly
+    -->
+
     <title>The Net Ninja AngularJS Demo</title>
     <link href="app/css/styles.css" rel="stylesheet" type="text/css" />
     <!-- <link href="app/css/other.css" rel="stylesheet" type="text/css" /> -->
